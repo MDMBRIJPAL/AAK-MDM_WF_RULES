@@ -1,0 +1,16 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core">
+	<Dialog title="{i18n>CopyDetails}" showHeader="false" class="cl_DialogStyle sapUiSizeCompact">
+		<customHeader>
+			<Toolbar class="cl_DilogCustomHdr" height="2.5rem">
+				<ToolbarSpacer/>
+				<Text text="{i18n>CopyDetails}" class="cl_DialogTitle sapUiTinyMarginTopBottom"/>
+				<ToolbarSpacer/>
+			</Toolbar>
+		</customHeader>
+		<VBox class="sapUiSmallMarginBegin sapUiSmallMarginTopBottom" id="idCopyContent"/>
+		<buttons>
+			<Button text="{i18n>Cancel}" icon="{= ${JM_ImageModel>/path} + 'Cancel.svg' }" class="sapUiTinyMarginEnd cl_SecondaryButton" press="onPressCopyCancel"/>
+			<Button text="{i18n>Copy}" icon="{= ${JM_ImageModel>/path} + 'Apply.svg' }" class="cl_PrimaryButton" press="onPressCopyConfirm"/>
+		</buttons>
+	</Dialog>
+</core:FragmentDefinition>

@@ -1,0 +1,72 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core">
+	<Dialog title="{i18n>F4Dialog}" class="cl_f4Help sapUiSizeCompact" verticalScrolling="false" afterClose="fnAfterCloseFragment">
+		<VBox class="sapUiSmallMargin cl_f4searchbox"  visible="{= (${JM_F4Model>/F4Type} !== 'Delegation') }" alignItems="Center" width="100%" height="3rem">
+			<SearchField liveChange="fnValueSearch" width="100%" placeholder="{i18n>SearchHere}" search="fnValueSearch"
+				class="cl_f4searchfield sapUiTinyMarginTopBottom"/>
+		</VBox>
+		<Toolbar class="cl_CharOverflow_toolbar sapUiTinyMarginTopBottom"  visible="{= ${JM_F4Model>/F4Type} === 'Delegation' }">
+			<Label text="{i18n>ResultList}" class="cl_headerlabel cl_MiniMarginEnd sapUiTinyMarginBegin"/>
+			<Label class="cl_Resultcount" text="({= ${JM_F4Model>/rows}.length})"/>
+			<ToolbarSpacer/>
+			<SearchField liveChange="fnValueSearch" width="34%" placeholder="{i18n>SearchHere}" search="fnValueSearch" class="cl_f4searchfield "/>
+		</Toolbar>
+		<VBox class="cl_f4tableScroll sapUiTinyMarginTop">
+			<Table id="idMaterialTable" items="{JM_F4Model>/rows}" mode="None" inset="false" fixedLayout="false" width="100%"
+				class="sapUiResponsiveMargin cl_f4table">
+				<headerToolbar >
+					<Toolbar visible="false">
+						<Title text="{i18n>F4Dialog}" level="H2"/>
+					</Toolbar>
+				</headerToolbar>
+				<columns>
+					<Column visible="{= !!${JM_F4Model>/labels/col1} }">
+						<Text text="{JM_F4Model>/labels/col1}"/>
+					</Column>
+					<Column visible="{= !!${JM_F4Model>/labels/col2} }">
+						<Text text="{JM_F4Model>/labels/col2}"/>
+					</Column>
+					<Column visible="{= !!${JM_F4Model>/labels/col3} }">
+						<Text text="{JM_F4Model>/labels/col3}"/>
+					</Column>
+					<Column visible="{= !!${JM_F4Model>/labels/col4} }">
+						<Text text="{JM_F4Model>/labels/col4}"/>
+					</Column>
+					<Column visible="{= !!${JM_F4Model>/labels/col5} }">
+						<Text text="{JM_F4Model>/labels/col5}"/>
+					</Column>
+					<Column visible="{= !!${JM_F4Model>/labels/col6} }">
+						<Text text="{JM_F4Model>/labels/col6}"/>
+					</Column>
+					<Column visible="{= !!${JM_F4Model>/labels/col7} }">
+						<Text text="{JM_F4Model>/labels/col7}"/>
+					</Column>
+					<Column visible="{= !!${JM_F4Model>/labels/col8} }">
+						<Text text="{JM_F4Model>/labels/col8}"/>
+					</Column>
+					<Column visible="{= !!${JM_F4Model>/labels/col9} }">
+						<Text text="{JM_F4Model>/labels/col9}"/>
+					</Column>
+				</columns>
+				<items>
+					<ColumnListItem type="Active" press="fnF4Itempress">
+						<cells>
+							<Text text="{JM_F4Model>col1}" visible="{= !!${JM_F4Model>col1} }"/>
+							<Text text="{JM_F4Model>col2}" visible="{= !!${JM_F4Model>col2} }"/>
+							<Text text="{JM_F4Model>col3}" visible="{= !!${JM_F4Model>col3} }"/>
+							<Text text="{JM_F4Model>col4}" visible="{= !!${JM_F4Model>col4} }"/>
+							<Text text="{JM_F4Model>col5}" visible="{= !!${JM_F4Model>col5} }"/>
+							<Text text="{JM_F4Model>col6}" visible="{= !!${JM_F4Model>col6} }"/>
+							<Text text="{JM_F4Model>col7}" visible="{= !!${JM_F4Model>col7} }"/>
+							<Text text="{JM_F4Model>col8}" visible="{= !!${JM_F4Model>col8} }"/>
+							<Text text="{JM_F4Model>col9}" visible="{= !!${JM_F4Model>col9} }"/>
+						</cells>
+					</ColumnListItem>
+				</items>
+			</Table>
+		</VBox>
+		<endButton>
+			<Button text="{i18n>Cancel}" class="sapUiSizeCompact cl_SecondaryButton sapUiSmallMarginEnd"
+				icon="{= ${JM_ImageModel>/path} + 'Cancel.svg'}" press="fnf4HelpCancel"/>
+		</endButton>
+	</Dialog>
+</core:FragmentDefinition>

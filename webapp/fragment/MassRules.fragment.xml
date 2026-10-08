@@ -1,0 +1,140 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:t="sap.ui.table" xmlns:grid="sap.ui.layout"
+	xmlns:uitable="sap.ui.table" xmlns:fi="sap.ui.unified">
+	<Dialog id="idMassRulesOpen" class="cl_DialogStyle sapUiSizeCompact" stretch="false" horizontalScrolling="false"
+		verticalScrolling="true" contentHeight="auto" draggable="false" resizable="false">
+		<customHeader>
+			<Toolbar class="cl_DilogCustomHdr" height="2.5rem">
+				<ToolbarSpacer/>
+				<Text text="{i18n>MassRules}" id="ID_MassHdrTxt" class="cl_DialogTitle sapUiTinyMarginTopBottom"/>
+				<ToolbarSpacer/>
+			</Toolbar>
+		</customHeader>
+		<VBox class=" sapUiTinyMarginBeginEnd sapUiTinyMarginTopBottom">
+			<grid:Grid defaultSpan="L12 M12 S12">
+				<VBox>
+					<Label text="{i18n>Count}" class="cl_inputLabel" labelFor="RID_MASTER"/>
+					<HBox width="100%">
+						<VBox width="20%"><Input id="ID_COUNT_MASS" class="cl_InputField " type="Number"/></VBox>
+						<VBox width="80%">
+							<Button text="{i18n>DownloadTemp}" tooltip="{i18n>DownloadTemp}" icon="{= ${JM_ImageModel>/path} + 'DownloadIcon.svg'}" press="fnDownloadMassRules"
+								class="cl_PrimaryButton sapUiTinyMarginBegin"/></VBox>
+					</HBox>
+					<layoutData>
+						<grid:GridData span="L3 M12 S12"/>
+					</layoutData>
+				</VBox>
+				<VBox alignItems="End">
+					<Label/>
+					<HBox>
+						<VBox class="sapUiTinyMarginEnd">
+							<Input id="id_fileNameInput" placeholder="{i18n>SelectFile}" class="cl_fileUploader cl_UploadFileInput" valueHelpRequest="fnUpload"
+								showValueHelp="true" valueHelpOnly="true"></Input>
+							<fi:FileUploader id="FileUploaderId" change="fnFileSelect" uploadOnChange="false" fileType="doc,docx,xls,xlsx,wdsl,msg,eml,zip,htm,pdf"
+								class="cl_fileupload"/>
+						</VBox>
+						<Button text="{i18n>Upload}" tooltip="{i18n>Upload}" id="id_upload" icon="{= ${JM_ImageModel>/path} + 'upload.svg'}"
+							class="cl_PrimaryButton" press="fnExcelUpload" enabled="{= ${JM_ContextLocalModel>/Ind} !== 'T'}"/>
+					</HBox>
+					<layoutData>
+						<grid:GridData span="L9 M12 S12"/>
+					</layoutData>
+				</VBox>
+			</grid:Grid>
+			<grid:Grid defaultSpan="L12 M12 S12">
+				<VBox class="sapUiTinyMarginTop cl_search_grid">
+					<OverflowToolbar class=" cl_ToolBarSpacer sapUiTinyMarginTopBottom">
+						<HBox class="sapUiSmallMarginBeginEnd">
+							<Label text="{i18n>ResultList} " class="cl_headerlabel"/>
+							<Label text="({= ${JM_MassRuleData>/}.length})" class="cl_Resultcount sapUiTinyMarginBegin"/>
+						</HBox>
+						<ToolbarSpacer/>
+						<HBox>
+							<Label text="{i18n>AvailableRecords} " class="cl_headerlabel"/>
+							<Label text="() " id="id_availableRec" class="cl_Resultcount sapUiTinyMarginBegin"/>
+						</HBox>
+						<HBox class="sapUiSmallMarginBeginEnd">
+							<Button icon="{= ${JM_ImageModel>/path} + 'del.svg'}" tooltip="{i18n>DeleteRule}" class=" sapUiSizeCompact cl_NoTxtPrimaryBtn"
+								press="fnDeleteMassRule"/>
+							<Button id="idMassToggle" icon="{= ${JM_ImageModel>/path} + 'ExpandCollapse.svg'}" tooltip="{i18n>Expand}"
+								class="sapUiSizeCompact sapUiTinyMarginBegin cl_NoTxtPrimaryBtn cl_ExpandCollapse" press="fnMassToggle"/>
+						</HBox>
+					</OverflowToolbar>
+					<uitable:TreeTable id="ID_MASSRULESTABLE" rows="{path:'JM_MassRuleData>/', parameters: {arrayNames:['Input']}}" selectionMode="Multi"
+						visibleRowCount="10" class="cl_TableStyle sapUiSmallMarginBeginEnd sapUiSmallMarginBottom" toggleOpenState="fnExpandNode">
+						<uitable:noData>
+							<VBox alignItems="Center" justifyContent="Center">
+								<Image src="{= ${JM_ImageModel>/path} + 'Nodatafound.gif'}" width="150px" height="150px"/>
+								<!--<Image src="{= ${JM_ImageModel>/path} + 'NoDataFound.png'}" width="150px" height="150px"/>-->
+								<Text text="{i18n>NoDataFound}"/>
+							</VBox>
+						</uitable:noData>
+						<uitable:columns>
+							<uitable:Column >
+								<Label text="{i18n>SerialNo}"/>
+								<uitable:template>
+									<Text text="{JM_MassRuleData>ItemNo}" visible="{= ${JM_MassRuleData>Ftype} === 'I' ? false : true}" class="cl_TableLabel"/>
+								</uitable:template>
+							</uitable:Column>
+							<uitable:Column >
+								<Label text="{i18n>FieldName}"/>
+								<uitable:template>
+									<Input value="{JM_MassRuleData>Fnm}" tooltip="{JM_MassRuleData>Fnm}" valueHelpRequest="fnfieldname" showValueHelp="true"
+										valueHelpOnly="true" editable="{= ${JM_MassRuleData>Ftype} === 'I' ? true : false}" class="cl_TableInput"/>
+								</uitable:template>
+							</uitable:Column>
+							<uitable:Column >
+								<Label text="{i18n>FieldDescription}" width="10rem"/>
+								<uitable:template>
+									<Text text="{JM_MassRuleData>FmmDes}" tooltip="{JM_MassRuleData>FmmDes}" wrapping="false" class="sapUiTinyMarginBegin cl_TableLabel"/>
+								</uitable:template>
+							</uitable:Column>
+							<uitable:Column >
+								<Label text="{i18n>Value}"/>
+								<uitable:template>
+									<Input value="{JM_MassRuleData>Value}" tooltip="{JM_MassRuleData>Value}" id="id_value" valueHelpRequest="fnvalue" liveChange="fnUpperCase"
+										valueState="{JM_MassRuleData>Value_VS}" valueStateText="{JM_MassRuleData>Value_VST}"
+										showValueHelp="{parts: [{path: 'JM_MassRuleData>FnmId'}], formatter:'.formatter.fnShowValueHelp'}" valueHelpOnly="true"
+										class=" cl_TableInput"/>
+								</uitable:template>
+							</uitable:Column>
+							<uitable:Column >
+								<Label text="{i18n>Text}"/>
+								<uitable:template>
+									<Text text="{JM_MassRuleData>RuleText}" wrapping="false" class="sapUiTinyMarginBegin cl_TableLabel"/>
+								</uitable:template>
+							</uitable:Column>
+							<uitable:Column id="id_tableui" visible="false">
+								<Label text="{i18n>TableRow}"/>
+								<uitable:template>
+									<Input value="{JM_MassRuleData>TableRow}" tooltip="{JM_MassRuleData>TableRow}" editable="false" class="cl_TableInput"/>
+								</uitable:template>
+							</uitable:Column>
+							<uitable:Column>
+								<Label text="{i18n>FunctionType}"/>
+								<uitable:template>
+									<Text text="{path: 'JM_MassRuleData>Ftype', formatter:'.formatter.formatFtype'}" class="cl_TableLabel sapUiTinyMarginBegin"/>
+								</uitable:template>
+							</uitable:Column>
+							<uitable:Column>
+								<Label text="{i18n>ReadOnly}"/>
+								<uitable:template>
+									<CheckBox class="cl_checkbx" select="fnReadOnlySelect" selected="{JM_MassRuleData>ChangeInd}"
+										enabled="{= ${JM_MassRuleData>Ftype} === 'R' ? true : false}" visible="{= ${JM_MassRuleData>Ftype} === 'R' ? true : false}"/>
+								</uitable:template>
+							</uitable:Column>
+						</uitable:columns>
+					</uitable:TreeTable>
+					<layoutData>
+						<grid:GridData span="L12 M12 S12"/>
+					</layoutData>
+				</VBox>
+			</grid:Grid>
+		</VBox>
+		<buttons>
+			<Button text="{i18n>Close}" icon="{= ${JM_ImageModel>/path} + 'cancel.svg'}" class="cl_SecondaryButton sapUiTinyMarginEnd"
+				press="fnConfirmCloseMassRule"/>
+			<Button text="{i18n>Submit}" visible="{JM_VisibleModel>/ForwardAgent}" icon="{= ${JM_ImageModel>/path} + 'Apply.svg'}" class=" cl_PrimaryButton"
+				press="fnMassRulesSubmit"/>
+		</buttons>
+	</Dialog>
+</core:FragmentDefinition>

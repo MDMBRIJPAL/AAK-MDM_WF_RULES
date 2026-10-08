@@ -1,0 +1,39 @@
+<!--<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core">-->
+<!--	<SelectDialog title="{i18n>ApplicationID}" multiSelect="true" class="sapUiPopupWithPadding sapUiSizeCompact cl_SelectDialog"-->
+<!--		items="{F4HelpModel>/List}" search="fnAppIdSearch" confirm="fnMassAppClose" liveChange="fnAppIdSearch" cancel="fnMassAppClose">-->
+<!--		<StandardListItem title="{F4HelpModel>DomvalueL} - {F4HelpModel>Ddtext}"/>-->
+<!--	</SelectDialog>-->
+<!--</core:FragmentDefinition>-->
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core">
+	<Dialog title="{i18n>ApplicationID}" class="cl_f4Help sapUiSizeCompact" verticalScrolling="false">
+		<VBox class="sapUiSmallMargin cl_f4searchbox" alignItems="Center" width="100%" height="3rem">
+			<SearchField id="idAppSearch" width="100%" placeholder="{i18n>SearchHere}" class="cl_f4searchfield sapUiTinyMarginTopBottom"
+				liveChange="fnAppIdSearch" search="fnAppIdSearch"/>
+		</VBox>
+		<VBox class="cl_f4tableScroll sapUiTinyMarginTop">
+			<Table id="idApplicationTable" items="{F4HelpModel>/List}" mode="MultiSelect" inset="false" fixedLayout="false" width="100%"
+				class="cl_f4table sapUiResponsiveMargin">
+				<columns>
+					<Column>
+						<Text text="{i18n>ApplicationID}"/>
+					</Column>
+					<Column>
+						<Text text="{i18n>Description}"/>
+					</Column>
+				</columns>
+				<items>
+					<ColumnListItem>
+						<cells>
+							<Text text="{F4HelpModel>DomvalueL}"/>
+							<Text text="{F4HelpModel>Ddtext}"/>
+						</cells>
+					</ColumnListItem>
+				</items>
+			</Table>
+		</VBox>
+		<buttons>
+			<Button text="{i18n>Submit}" icon="{= ${JM_ImageModel>/path} + 'Apply.svg' }" type="Emphasized" press="fnMassAppOK" class="cl_PrimaryButton"/>
+			<Button text="{i18n>Cancel}" icon="{= ${JM_ImageModel>/path} + 'Cancel.svg'}" press="fnMassAppCancel" class="cl_SecondaryButton"/>
+		</buttons>
+	</Dialog>
+</core:FragmentDefinition>

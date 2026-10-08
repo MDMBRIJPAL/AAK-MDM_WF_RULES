@@ -1,0 +1,66 @@
+.sapMPage>.sapMPageHeader+section, .sapMPage>.sapMPageSubHeader+section, .sapMPage>.sapMPageHeader+.sapUiHiddenPlaceholder+section{
+	top:2.5rem;
+}
+
+
+.cl_color_screen {
+    background-image: url('../Image/AdminFrame.jpg') !important;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 100%;
+}
+
+.cl_logoImage {
+    width: 2.5rem;
+    position: relative;
+    right: 8px;
+}
+
+.cl_TileBg {
+	width:20rem !important;
+    background-color: #f3f3f3 !important;
+    border-radius: 80px 0px 80px 0px;
+    box-shadow: rgba(10, 30, 10, 0.12) 0px 1px 2px 0px, rgba(10, 30, 10, 0.32) 0px 1px 8px 0px;
+}
+
+.cl_TileBg:hover {
+    background-color: #f3f3f3 !important;
+    border-radius: 80px 0px 80px 0px !important;
+    border: 1px solid #3393A1 !important;
+    background: #eaf9ff !important;
+    transform: translateY(-2px) !important;
+    transition: transform .15s ease, background .15s ease, box-shadow .15s ease;
+    box-shadow: 0 6px 14px rgba(0, 0, 0, .12);
+}
+
+
+.cl_downbgImage {
+    background-position: center 261px !important;
+    background-image: url(../Image/AdminBackground.svg) !important;
+    background-size: 24rem;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.cl_LabelTile {
+    font-family: 'Segoe UI' !important;
+    font-size: 15px !important;
+    color: #141414 !important;
+    letter-spacing: 0.5px;
+    font-weight: 500;
+}
+
+.cl_alignCenter.sapMFlexItemAlignAuto {
+    align-self: center !important;
+}
+
+.Cl_blueBold {
+    color: #3393A1;
+    font-weight: bold;
+}
+
+.Cl_welcomeText {
+    font-size: 15px !important;
+    font-family: Segoe UI !important;
+}

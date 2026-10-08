@@ -1,0 +1,309 @@
+.cl_CharOverflow_toolbar.sapMTB.sapMTBStandard {
+    border: none !important;
+    padding-left: 0px !important;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+    border-bottom-left-radius: 8px;
+    border-bottom-right-radius: 8px;
+}
+
+.cl_CharOverflow_toolbar .sapMTBSpacer {
+    display: flex !important;
+}
+
+.cl_varText {
+    font-weight: 500;
+    font-family: Segoe UI;
+    color: #141414;
+    font-size: 16px;
+}
+
+.cl_label_blue {
+    font-weight: 400;
+    font-family: Segoe UI;
+    color: #54BEBD;
+    font-size: 13px;
+}
+
+.cl_AddDelete {
+    opacity: 0.5 !important;
+}
+
+.cl_ReduceCheckbx.sapMCb {
+    right: 7px !important;
+    position: relative !important;
+}
+
+.cl_MiniMarginTop {
+    margin-top: 4px;
+}
+
+.cl_MiniMarginEnd {
+    margin-Right: 4px;
+}
+
+.cl_wfradiobtns .sapMLabel {
+    font-size: 14px !important;
+    font-family: 'Segoe UI' !important;
+    font-weight: 400 !important;
+    color: #141414 !important;
+}
+
+.cl_wfradiobtns .sapMRb:focus::before {
+    border: none !important;
+}
+
+.cl_wfradiobtns .sapMRbSel .sapMRbBInn {
+    fill: #3393A1;
+}
+
+.cl_wfradiobtns .sapMRb .sapMRbB .sapMRbBOut {
+    stroke: #3393A1;
+}
+
+.cl_cpyInput .sapMInputBaseIconContainer .sapUiIcon.sapMInputBaseIcon {
+    color: #3393A1;
+    line-height: 1.8rem;
+}
+
+.cl_ReadOnlyBackground {
+    background-color: transparent !important;
+}
+
+.cl_maxField {
+    background-color: #BBBBC3;
+}
+
+.cl_maxfield .sapUiTableTr > td:nth-child(3),
+.cl_maxfield .sapUiTableTr > td:nth-child(1) {
+    background-color: #E9EFF0 !important;
+}
+
+.cl_maxfield .sapUiTableTr > td:nth-child(3),
+.cl_maxfield .sapUiTableTr > td:nth-child(1),
+.cl_maxfield .sapUiTableTr > td:nth-child(8),
+.cl_maxfield .sapUiTableTr > td:nth-child(9),
+.cl_maxfield .sapUiTableTr > td:nth-child(3) .sapUiTableCell {
+    background-color: #E9EFF0 !important;
+}
+
+.cl_TabDialog {
+    width: 400px !important;
+}
+
+.cl_Agentfield .sapUiTableTr > td:nth-child(5),
+.cl_Agentfield .sapUiTableTr > td:nth-child(2) {
+    background-color: #E9EFF0 !important;
+}
+
+.cl_Agentfield .sapUiTableTr > td:nth-child(5),
+.cl_Agentfield .sapUiTableTr > td:nth-child(2),
+.cl_Agentfield .sapUiTableTr > td:nth-child(3) .sapUiTableCell {
+    background-color: #E9EFF0 !important;
+}
+
+.cl_bordernonrule {
+    border: none !important;
+    background: #e8e8e8 !important;
+}
+.cl_pageContainter {
+    margin-left: 4rem;
+    margin-right: 1rem;
+    margin-top: 1rem;
+}
+
+.cl_deleteTblBtn.sapUiSizeCompact .sapMBtnInner .sapMBtnIcon.sapMImg {
+    position: relative !important;
+    top: 3px !important;
+    max-height: 1.2rem !important;
+}
+
+.cl_deleteTblBtn.sapMBtn:focus-visible>.sapMFocusable:not(.sapMBadgeIndicator)::before,
+.cl_deleteTblBtn.sapMBtn:focus>.sapMFocusable:not(.sapMBadgeIndicator)::before {
+    border: none !important;
+}
+
+.cl_deleteTblBtn:not(.sapMBtnDisabled)>.sapMBtnTransparent.sapMBtnActive {
+    border: none !important;
+}
+
+
+
+button[id*="-OK"].sapMBtn:focus > .sapMBtnEmphasized.sapMFocusable:not(.sapMBtnActive):not(.sapMToggleBtnPressed):not(.sapMBadgeIndicator)::before {
+    border: none;
+}
+
+button[id*="-Cancel"].sapMBtn:focus > .sapMBtnEmphasized.sapMFocusable:not(.sapMBtnActive):not(.sapMToggleBtnPressed):not(.sapMBadgeIndicator)::before {
+    border: none;
+}
+
+button[id*="-OK"] .sapMBtnInner {
+    background: linear-gradient(to right, #54BEBD, #0382A5) !important;
+    border: none !important;
+    border-radius: 6px !important;
+    color: #ffffff !important;
+}
+
+button[id*="-Cancel"] .sapMBtnInner {
+    background: linear-gradient(to right, #BBBBC5, #6D6D74) !important;
+    border: none !important;
+    border-radius: 6px !important;
+    color: #ffffff !important;
+}
+
+.cl_search_grid {
+    background: #ffffff;
+    border-right: 1px solid #9AA0A7;
+    border-left: 1px solid #9AA0A7;
+    border-bottom: 1px solid #9AA0A7;
+    border-top: 1px solid #9AA0A7;
+    border-radius: 7px;
+}
+
+.cl_MassBtn .sapMBtnDefault::before {
+    border: none !important;
+}
+
+.cl_MassBtn .sapMBtnInner {
+    background-color: #E5FCFF !important;
+    height: 21px !important;
+    font-family: Segoe UI;
+    font-size: 9px;
+    letter-spacing: 1px !important;
+    color: #4E4B66 !important;
+    align-items: center;
+    justify-content: center;
+    border-radius: 3px;
+    border: 1px solid #3393A1 !important;
+}
+
+
+.cl_MassBtn.sapMBtn:hover>.sapMBtnHoverable {
+    background-color: #E5FCFF;
+}
+
+.cl_MassBtn.sapMBtn:hover:not(.sapMBtnDisabled):not(.sapMSBActive)>.sapMBtnHoverable:not(.sapMBtnDisabled):not(.sapMBtnActive):not(.sapMToggleBtnPressed):not(.sapMBtnTransparent).sapMBtnDefault,
+.sapMBtn:hover:not(.sapMBtnDisabled):not(.sapMSBActive)>.sapMBtnHoverable:not(.sapMBtnDisabled):not(.sapMBtnActive):not(.sapMToggleBtnPressed):not(.sapMBtnTransparent).sapMBtnGhost {
+    color: #4E4B66 !important;
+}
+
+.cl_MassBtn.sapUiSizeCompact .sapMBtnInner .sapMBtnIcon.sapMImg {
+    max-height: 13px !important;
+    padding-right: 2px;
+}
+
+/*Need To change*/
+.cl_SelectDialog.sapMDialog.sapMDialogWithSubHeader .sapMDialogTitleGroup .sapMIBar {
+    background: linear-gradient(to left, #56C4CD, #9DFAF6) !important;
+}
+
+.cl_SelectDialog .sapMBarTitleAlignAuto .sapMBarPH {
+    justify-content: center !important;
+}
+
+.cl_SelectDialog .sapMSFF {
+    background: rgba(53, 53, 65, 0.04) !important;
+    border-radius: 3px;
+    margin-top: 3.5px;
+    height: 1.6rem;
+}
+
+.cl_SelectDialog .sapMSFI::placeholder {
+    font-family: 'Segoe UI' !important;
+    font-weight: 400;
+    letter-spacing: 0.15px;
+    color: #9AA0A7;
+    opacity: 1;
+    font-style: normal;
+}
+
+.cl_SelectDialog .sapMSLI {
+    height: 2.5rem !important;
+}
+
+.cl_SelectDialog .sapMCbBg.sapMCbMarkChecked {
+    height: 15px;
+    width: 15px;
+    top: 0.5rem;
+    left: 0.5rem;
+    background-color: #3393A1 !important;
+    border: none !important;
+}
+
+.cl_SelectDialog .sapMCbBg:not(.sapMCbMarkChecked) {
+    background-color: transparent !important;
+    border: 1px solid #ccc !important;
+}
+
+.cl_SelectDialog .sapMCbBg.sapMCbMarkChecked::before {
+    font-size: 0.75rem !important;
+    color: white !important;
+}
+
+.cl_SelectDialog.sapMCb:focus::before {
+    content: '';
+    border: none !important;
+}
+
+.cl_SelectDialog .sapMTB-Info-CTX.sapMTB {
+    display: none;
+}
+
+.cl_SelectDialog .sapMCb:focus::before {
+    border: none !important;
+}
+
+.cl_SelectDialog.sapMDialog footer .sapMTB.sapMFooter-CTX {
+    background: #E8E8E8 !important;
+    align-items: center;
+    justify-content: center;
+}
+
+.cl_SelectDialog .sapMTBSpacer {
+    display: none;
+}
+
+.cl_SelectDialog .sapMBtnInner.sapMBtnEmphasized {
+    background: linear-gradient(to right, #54BEBD, #0382A5);
+    font-family: 'Segoe UI' !important;
+    font-size: 13px !important;
+    color: #FFFFFF !important;
+    align-items: center;
+    align-content: center;
+    justify-content: center;
+    border-radius: 4px;
+    border: none !important;
+}
+
+.cl_SelectDialog .sapMIBar.sapMTB .sapMBarChild~.sapMBarChild {
+    margin: 0 0 0 1rem !important;
+}
+
+.cl_SelectDialog .sapMIBar .sapMBtn .sapMBtnInner.sapMBtnDefault:not(.sapMToggleBtnPressed):not(:hover) {
+    background: linear-gradient(to right, #BBBBC5, #6D6D74) !important;
+    font-family: Segoe UI;
+    font-size: 13px;
+    color: #FFFFFF !important;
+    align-items: center;
+    align-content: center;
+    justify-content: center;
+    border-radius: 4px;
+    border: none !important;
+}
+
+.cl_SelectDialog .sapMIBar .sapMBtnInner:not(.sapMToggleBtnPressed):not(.sapMBtnEmphasized):not(.sapMBtnAccept):not(.sapMBtnAttention):not(.sapMBtnReject):not(.sapMBtnActive):not(.sapMBtnGhost) {
+    background: linear-gradient(to right, #BBBBC5, #6D6D74) !important;
+    font-family: Segoe UI;
+    font-size: 13px;
+    color: #FFFFFF !important;
+    align-items: center;
+    align-content: center;
+    justify-content: center;
+    border-radius: 4px;
+    border: none !important;
+}
+
+.cl_SelectDialog .sapMListUl {
+    margin-top: 0.6rem;
+}
+

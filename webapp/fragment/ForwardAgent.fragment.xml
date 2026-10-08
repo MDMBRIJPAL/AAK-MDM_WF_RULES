@@ -1,0 +1,193 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:t="sap.ui.table" xmlns:grid="sap.ui.layout">
+	<Dialog id="idForwardOpen" class="cl_DialogStyle sapUiSizeCompact " stretch="false" horizontalScrolling="false"
+		verticalScrolling="true" contentWidth="33rem" contentHeight="auto" draggable="false" resizable="false">
+		<customHeader>
+			<Toolbar class="cl_DilogCustomHdr" height="2.5rem">
+				<ToolbarSpacer/>
+				<Text text="{i18n>WorkflowDelegation}" class="cl_DialogTitle sapUiTinyMarginTopBottom"/>
+				<ToolbarSpacer/>
+			</Toolbar>
+		</customHeader>
+		<VBox class="cl_wf_icontabbox sapUiSmallMarginBeginEnd sapUiSmallMarginTopBottom">
+			<IconTabBar id="idIconTabBarEmailSLA" expanded="true" class="cl_wf_icontabbar cl_wf_icontabFontStyle" select="fnForwardIconTab">
+				<items>
+					<IconTabFilter text="{i18n>New}" key="NewFrd" id="idNewForwardTab">
+						<grid:Grid class="sapUiSmallMarginTop">
+							<VBox >
+								<Select selectedKey="{JM_ForwardModel>/MenuType}" items="{JM_ForwardModel>/MenuItems}" change="fnMenu"
+									class="cl_selectBox sapUiSizeCompact sapUiTinyMarginEnd">
+									<core:Item key="{JM_ForwardModel>key}" text="{JM_ForwardModel>text}" class="cl_selectBoxItem"/>
+								</Select>
+								<layoutData>
+									<grid:GridData span="L12 M12 S12"/>
+								</layoutData>
+							</VBox>
+							<VBox>
+								<Label text="{i18n>curAgentId}" class="cl_inputLabel " required="true"/>
+								<HBox width="100%">
+									<VBox width="50%" class="sapUiSmallMarginEnd">
+										<Input id="ID_FD_CURRAGENT" value="{JM_ForwardModel>/CurrAgent}" valueHelpRequest="fnF4press" valueHelpOnly="false" showValueHelp="true"
+											maxLength="18" width="100%" class="cl_InputField"/>
+									</VBox>
+									<VBox width="50%">
+										<Input id="ID_FD_CURRAGENT_DES" value="{JM_ForwardModel>/CurrAgentDesc}" editable="false" showValueHelp="false" maxLength="18" width="100%"
+											class="cl_InputField"/>
+									</VBox>
+								</HBox>
+								<layoutData>
+									<grid:GridData span="L12 M12 S12"/>
+								</layoutData>
+							</VBox>
+							<VBox>
+								<Label text="{i18n>newAgentId}" class="cl_inputLabel  " required="true"/>
+								<HBox width="100%">
+									<VBox width="50%" class="sapUiSmallMarginEnd">
+										<Input id="ID_FD_NEWAGENT" value="{JM_ForwardModel>/NewAgent}" liveChange="fnLiveChange" valueHelpRequest="fnF4press" valueHelpOnly="false"
+											showValueHelp="true" maxLength="18" width="100%" class="cl_InputField"/>
+									</VBox>
+									<VBox width="50%">
+										<Input id="ID_FD_NEWAGENT_DES" value="{JM_ForwardModel>/NewAgentDesc}" editable="false" showValueHelp="false" maxLength="18" width="100%"
+											class="cl_InputField"/>
+									</VBox>
+								</HBox>
+								<layoutData>
+									<grid:GridData span="L12 M12 S12"/>
+								</layoutData>
+							</VBox>
+							<VBox>
+								<Label text="{i18n>StartDate}" class="cl_inputLabel  " required="true"/>
+								<VBox width="100%">
+									<DatePicker id="ID_FD_STARTDATE" editable="false"
+										value="{path: 'JM_ForwardModel>/StartDate', type: 'sap.ui.model.type.Date', formatOptions: { pattern: 'dd.MM.yyyy', strictParsing: true }}"
+										displayFormat="dd.MM.yyyy" valueFormat="yyyy-MM-ddTHH:mm:ss" change="fnDateRangevalidation" class="cl_InputField"/>
+								</VBox>
+								<layoutData>
+									<grid:GridData span="L6 M12 S12"/>
+								</layoutData>
+							</VBox>
+							<VBox>
+								<Label text="{i18n>EndDate}" class="cl_inputLabel  " required="true"/>
+								<VBox width="100%">
+									<DatePicker id="ID_FD_ENDDATE"
+										value="{path: 'JM_ForwardModel>/EndDate', type: 'sap.ui.model.type.Date', formatOptions: { pattern: 'dd.MM.yyyy', strictParsing: true }}"
+										displayFormat="dd.MM.yyyy" valueFormat="yyyy-MM-ddTHH:mm:ss" change="fnDateRangevalidation" class="cl_InputField"/>
+								</VBox>
+								<layoutData>
+									<grid:GridData span="L6 M12 S12"/>
+								</layoutData>
+							</VBox>
+							<VBox>
+								<Label text="{i18n>wrkitmtyp}" class="cl_inputLabel  "/>
+								<HBox width="100%">
+									<CheckBox id="ID_CURRWORKITEM" selected="{JM_ForwardModel>/CurrWorkItem}" text="{i18n>currWorkItm}" class="cl_checkbx cl_ReduceCheckbx"/>
+									<CheckBox id="ID_NEWWORKITEM" selected="{JM_ForwardModel>/NewWorkItem}" text="{i18n>NewWorkItm}" class="cl_checkbx"/>
+								</HBox>
+								<layoutData>
+									<grid:GridData span="L12 M12 S12"/>
+								</layoutData>
+							</VBox>
+						</grid:Grid>
+					</IconTabFilter>
+					<IconTabFilter text="{i18n>Existing}" key="ExFrd" id="idExistForwardTab">
+						<grid:Grid class="sapUiSmallMarginTop">
+							<VBox >
+							
+									<Select selectedKey="{JM_ForwardModel>/MenuType_Ex}" items="{JM_ForwardModel>/MenuItems}" change="fnGetExistForward"
+										class="cl_selectBox sapUiSizeCompact sapUiTinyMarginEnd">
+										<core:Item key="{JM_ForwardModel>key}" text="{JM_ForwardModel>text}" class="cl_selectBoxItem"/>
+									</Select>
+						
+								<layoutData>
+									<grid:GridData span="L12 M12 S12"/>
+								</layoutData>
+							</VBox>
+							<VBox>
+								<Label text="{i18n>curAgentId}" class="cl_inputLabel " required="true"/>
+								<HBox width="100%">
+									<VBox width="50%" class="sapUiSmallMarginEnd">
+										<Input id="ID_FD_CURRAGENT_EX" value="{JM_ForwardModel>/CurrAgentEx}" valueHelpRequest="fnF4press" valueHelpOnly="true" showValueHelp="true"
+											maxLength="18" width="100%" class="cl_InputField"/>
+									</VBox>
+									<VBox width="50%">
+										<Input id="ID_FD_CURRAGENT_EX_DES" value="{JM_ForwardModel>/CurrAgentExDesc}" editable="false" showValueHelp="false" maxLength="18"
+											width="100%" class="cl_InputField"/>
+									</VBox>
+								</HBox>
+								<layoutData>
+									<grid:GridData span="L12 M12 S12"/>
+								</layoutData>
+							</VBox>
+							<VBox>
+								<Label text="{i18n>newAgentId}" class="cl_inputLabel  " required="true"/>
+								<HBox width="100%">
+									<VBox width="50%" class="sapUiSmallMarginEnd">
+										<Input id="ID_FD_NEWAGENT_EX" editable="{= ${JM_ForwardModel>/Active} === 'G' }" value="{JM_ForwardModel>/NewAgentEx}"
+											liveChange="fnLiveChange" valueHelpRequest="fnF4press" valueHelpOnly="true" showValueHelp="true" maxLength="18" width="100%"
+											class="cl_InputField"/>
+									</VBox>
+									<VBox width="50%">
+										<Input id="ID_FD_NEWAGENT_EX_DES" value="{JM_ForwardModel>/NewAgentExDesc}" editable="false" showValueHelp="false" maxLength="18"
+											width="100%" class="cl_InputField"/>
+									</VBox>
+								</HBox>
+								<layoutData>
+									<grid:GridData span="L12 M12 S12"/>
+								</layoutData>
+							</VBox>
+							<VBox>
+								<Label text="{i18n>StartDate}" class="cl_inputLabel  " required="true"/>
+								<VBox width="100%">
+									<DatePicker id="ID_FD_STARTDATE_EX" editable="false"
+										value="{path: 'JM_ForwardModel>/StartDateEx', type: 'sap.ui.model.type.Date', formatOptions: { pattern: 'dd.MM.yyyy', strictParsing: true }}"
+										displayFormat="dd.MM.yyyy" valueFormat="yyyy-MM-ddTHH:mm:ss" change="fnDateRangevalidation" class="cl_InputField"/>
+								</VBox>
+								<layoutData>
+									<grid:GridData span="L6 M12 S12"/>
+								</layoutData>
+							</VBox>
+							<VBox>
+								<Label text="{i18n>EndDate}" class="cl_inputLabel  " required="true"/>
+								<VBox width="100%">
+									<DatePicker id="ID_FD_ENDDATE_EX" editable="{= ${JM_ForwardModel>/Active} === 'G' }"
+										value="{path: 'JM_ForwardModel>/EndDateEx', type: 'sap.ui.model.type.Date', formatOptions: { pattern: 'dd.MM.yyyy', strictParsing: true }}"
+										displayFormat="dd.MM.yyyy" valueFormat="yyyy-MM-ddTHH:mm:ss" change="fnDateRangevalidation" class="cl_InputField"/>
+								</VBox>
+								<layoutData>
+									<grid:GridData span="L6 M12 S12"/>
+								</layoutData>
+							</VBox>
+							<VBox>
+								<Label text="{i18n>wrkitmtyp}" class="cl_inputLabel  "/>
+								<HBox width="100%">
+									<CheckBox id="ID_CURRWORKITEM_EX" selected="{JM_ForwardModel>/CurrWorkItemEx}" enabled="{= ${JM_ForwardModel>/Active} === 'G' }"
+										text="{i18n>currWorkItm}" class="cl_checkbx cl_ReduceCheckbx"/>
+									<CheckBox id="ID_NEWWORKITEM_EX" selected="{JM_ForwardModel>/NewWorkItemEx}" enabled="{= ${JM_ForwardModel>/Active} === 'G' }"
+										text="{i18n>NewWorkItm}" class="cl_checkbx"/>
+								</HBox>
+								<layoutData>
+									<grid:GridData span="L12 M12 S12"/>
+								</layoutData>
+							</VBox>
+							<VBox class="Cl_NoteCon">
+								<Label text="{i18n>NoteTxtDate}" class="cl_inputLabel sapUiTinyMarginBegin "/>
+								<layoutData>
+									<grid:GridData span="L12 M12 S12"/>
+								</layoutData>
+							</VBox>
+						</grid:Grid>
+					</IconTabFilter>
+				</items>
+			</IconTabBar>
+		</VBox>
+		<buttons>
+			<Button text="{i18n>Close}" icon="{= ${JM_ImageModel>/path} + 'cancel.svg'}" class="cl_SecondaryButton sapUiTinyMarginEnd"
+				press="fnConfirmCloseForward"/>
+			<Button text="{i18n>Forward}" visible="{JM_VisibleModel>/ForwardAgent}" icon="{= ${JM_ImageModel>/path} + 'Apply.svg'}"
+				class=" cl_PrimaryButton sapUiTinyMarginEnd" press="fnForwardSubmit"/>
+			<Button text="{i18n>Revert}" visible="{= !${JM_VisibleModel>/ForwardAgent} }" icon="{= ${JM_ImageModel>/path} + 'SendbackW.svg'}"
+				class="cl_PrimaryButton sapUiTinyMarginEnd" press="fnForwardRevert" enabled="{= ${JM_ForwardModel>/Active} === 'G' }"/>
+			<Button text="{i18n>Modify}" visible="{= !${JM_VisibleModel>/ForwardAgent} }" icon="{= ${JM_ImageModel>/path} + 'Modify.svg'}"
+				class="cl_PrimaryButton sapUiTinyMarginEnd" press="fnForwardModify" enabled="{= ${JM_ForwardModel>/Active} === 'G' }"/>
+		</buttons>
+	</Dialog>
+</core:FragmentDefinition>

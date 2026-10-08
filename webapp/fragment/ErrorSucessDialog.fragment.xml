@@ -1,0 +1,23 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core">
+	<Dialog id="idMessageDialog" showHeader="false" class="cl_DialogStyle sapUiSizeCompact" contentHeight="400px" contentWidth="600px"
+		verticalScrolling="true" horizontalScrolling="false">
+		<customHeader>
+			<Toolbar class="cl_DilogCustomHdr" height="2.5rem">
+				<ToolbarSpacer/>
+				<Text text="{JM_msgModel>/headerText}" class="cl_DialogTitle sapUiTinyMarginTopBottom"/>
+				<ToolbarSpacer/>
+			</Toolbar>
+		</customHeader>
+		<content>
+			<MessageView id="idMessageView" items="{ path: 'JM_msgModel>/messages' }">
+				<items>
+					<MessageItem type="{JM_msgModel>type}" title="{JM_msgModel>title}" subtitle="{JM_msgModel>subtitle}"/>
+				</items>
+			</MessageView>
+		</content>
+		<endButton>
+			<Button text="{i18n>Cancel}" icon="{= ${JM_ImageModel>/path} + 'Cancel.svg'}"
+				class="sapUiSizeCompact cl_SecondaryButton sapUiSmallMarginEnd" press="onCloseDialog"/>
+		</endButton>
+	</Dialog>
+</core:FragmentDefinition>

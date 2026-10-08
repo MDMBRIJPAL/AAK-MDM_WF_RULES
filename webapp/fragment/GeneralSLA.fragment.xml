@@ -1,0 +1,169 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:layout="sap.ui.layout" xmlns:uitable="sap.ui.table">
+	<Dialog class="cl_DialogStyle sapUiSizeCompact " horizontalScrolling="false" verticalScrolling="true" resizable="false" contentWidth="30rem">
+		<customHeader>
+			<Toolbar class="cl_DilogCustomHdr" height="2.5rem">
+				<ToolbarSpacer/>
+				<Text text="{i18n>ApplicationSLA}" visible="{= !${InputModel>/WfParm1}}" class="cl_DialogTitle sapUiTinyMarginTopBottom"/>
+				<Text visible="{= !!${InputModel>/WfParm1}}"
+					text="{ parts: [ {path: 'i18n>GeneralSLA'}, {path: 'InputModel>/WfParm1'}, {path: 'InputModel>/WfParm2'},{path: 'InputModel>/WfParm3'}, {path: 'InputModel>/WfParm4'} ], formatter: '.formatter.formatEmailSLA' }"
+					class="cl_DialogTitle sapUiTinyMarginTopBottom"/>
+				<ToolbarSpacer/>
+			</Toolbar>
+		</customHeader>
+		<VBox class="sapUiTinyMarginBeginEnd sapUiTinyMarginTopBottom ">
+			<VBox width="100%">
+				<layout:Grid defaultSpan="L12 M12 S12">
+					<VBox class="sapUiTinyMarginBottom">
+						<Label text="{i18n>Level}" class="cl_inputLabel"/>
+						<Select selectedKey="{JM_GeneralSLAModel>/MenuType}" items="{JM_GeneralSLAModel>/MenuItems}" change="fnSelectedItem"
+							class="cl_selectBox sapUiSizeCompact">
+							<core:Item key="{JM_GeneralSLAModel>key}" text="{JM_GeneralSLAModel>text}"/>
+						</Select>
+						<layoutData>
+							<layout:GridData span="L3 M12 S12"/>
+						</layoutData>
+					</VBox>
+					<VBox class="sapUiTinyMarginBottom">
+						<Label text="{i18n>ExistingApprover}" class=" sapUiSmallMarginEnd cl_inputLabel"/>
+						<CheckBox id="ID_EXTAPR_G" select="onSlaFieldChange" class="cl_ReduceCheckbx cl_checkbx sapUiSizeCompact"/>
+						<layoutData>
+							<layout:GridData span="L9 M12 S12"/>
+						</layoutData>
+					</VBox>
+					<VBox class="sapUiTinyMarginBottom">
+						<Label text="{i18n>SLARemiander}" class="cl_inputLabel sapUiTinyMarginTop"/>
+						<layoutData>
+							<layout:GridData span="L6 M6 S12"/>
+						</layoutData>
+					</VBox>
+					<VBox class="sapUiTinyMarginBottom">
+						<Input id="ID_SLAREMDATE_G" valueLiveUpdate="true" type="Number" showValueHelp="false" liveChange="fn_slavalidation"
+							change="onSlaFieldChange" width="100px" class=" sapUiSizeCompact cl_InputField"/>
+						<layoutData>
+							<layout:GridData span="L3 M6 S12"/>
+						</layoutData>
+					</VBox>
+					<VBox class="sapUiTinyMarginBottom">
+						<TimePicker id="ID_SLAREMTIME_G" width="100px" change="onSlaFieldChange" displayFormat="HH:mm" valueFormat="HH:mm" placeholder=" "
+							class="sapUiSizeCompact cl_InputField "/>
+						<layoutData>
+							<layout:GridData span="L3 M6 S12"/>
+						</layoutData>
+					</VBox>
+					<VBox class="sapUiTinyMarginBottom">
+						<Label text="{i18n>SLAEscalation}" class=" cl_inputLabel sapUiTinyMarginTop"/>
+						<layoutData>
+							<layout:GridData span="L6 M6 S12"/>
+						</layoutData>
+					</VBox>
+					<VBox class="sapUiTinyMarginBottom">
+						<Input id="ID_SLAESCDATE_G" valueLiveUpdate="true" type="Number" change="onSlaFieldChange" showValueHelp="false"
+							liveChange="fn_slavalidation" width="100px" class=" sapUiSizeCompact cl_InputField"/>
+						<layoutData>
+							<layout:GridData span="L3 M6 S12"/>
+						</layoutData>
+					</VBox>
+					<VBox class="sapUiTinyMarginBottom">
+						<TimePicker id="ID_SLAESCTIME_G" width="100px" change="onSlaFieldChange" displayFormat="HH:mm" valueFormat="HH:mm" placeholder=" "
+							class="sapUiSizeCompact cl_InputField "/>
+						<layoutData>
+							<layout:GridData span="L3 M6 S12"/>
+						</layoutData>
+					</VBox>
+					<VBox class="sapUiTinyMarginBottom">
+						<Label text="{i18n>SLAMailTrigger}" class=" cl_inputLabel sapUiTinyMarginTop"/>
+						<layoutData>
+							<layout:GridData span="L6 M6 S12"/>
+						</layoutData>
+					</VBox>
+					<VBox class="sapUiTinyMarginBottom">
+						<Input id="ID_TRIGGERDATE_G" valueLiveUpdate="true" type="Number" change="onSlaFieldChange" showValueHelp="false"
+							liveChange="fn_slavalidation" width="100px" class=" sapUiSizeCompact cl_InputField"/>
+						<layoutData>
+							<layout:GridData span="L3 M6 S12"/>
+						</layoutData>
+					</VBox>
+					<VBox class="sapUiTinyMarginBottom">
+						<TimePicker id="ID_TRIGGERTIME_G" width="100px" change="onSlaFieldChange" displayFormat="HH:mm" valueFormat="HH:mm" placeholder=" "
+							class="sapUiSizeCompact cl_InputField "/>
+						<layoutData>
+							<layout:GridData span="L3 M6 S12"/>
+						</layoutData>
+					</VBox>
+					
+					<VBox class="sapUiTinyMarginBottom">
+						<Label text="{i18n>Email}" class=" cl_inputLabel"/>
+						<HBox>
+							<VBox width="75%" class="sapUiSmallMarginEnd">
+								<Input id="id_slamail_G" liveChange="onEmailLiveChange" width="100%" change="onEmailChange" class=" cl_InputField "/>
+							</VBox>
+							<VBox width="25%">
+								<ComboBox id="ID_EMAILCOMBOBOX_G" items="{JM_SLASELMODEL>/List}" change="onSlaMailTypeChange" class="sapUiSizeCompact cl_InputField">
+									<core:Item key="{JM_SLASELMODEL>key}" text="{JM_SLASELMODEL>text}"/>
+								</ComboBox>
+							</VBox>
+						</HBox>
+						<layoutData>
+							<layout:GridData span="L10 M6 S12"/>
+						</layoutData>
+					</VBox>
+					<VBox class="sapUiTinyMarginBottom">
+						<Label></Label>
+						<HBox>
+							<Button icon="{= ${JM_ImageModel>/path} + 'Plus.svg'}" class=" cl_NoTxtPrimaryBtn sapUiSizeCompact " press="fnaddGeneralSlaEmail"
+								tooltip="{i18n>AddEmail}"/>
+							<Button icon="{= ${JM_ImageModel>/path} + 'del.svg'}" class="sapUiTinyMarginBegin cl_NoTxtPrimaryBtn sapUiSizeCompact"
+								press="fnDelMultiGSlaPop" tooltip="{i18n>RemoveEmail}"/>
+						</HBox>
+						<layoutData>
+							<layout:GridData span="L2 M6 S12"/>
+						</layoutData>
+					</VBox>
+					<VBox class="sapUiTinyMarginBottom">
+						<uitable:Table id="ID_GSLA_TBL" selectionMode="MultiToggle" visibleRowCount="4" rows="{GenralSlaModel>/GeneralSlaList}"
+							class=" cl_TableStyle">
+							<uitable:noData>
+								<VBox alignItems="Center" justifyContent="Center">
+									<Image src="{= ${JM_ImageModel>/path} + 'Nodatafound.gif'}" width="100px" height="100px"/>
+									<!--<Image src="{= ${JM_ImageModel>/path} + 'NoDataFound.png'}" width="100px" height="100px"/>-->
+									<Text text="{i18n>NoDataFound}"/>
+								</VBox>
+							</uitable:noData>
+							<uitable:columns>
+								<uitable:Column width="50%">
+									<uitable:label><Label text="{i18n>Email}"/></uitable:label>
+									<uitable:template>
+										<Text text="{GenralSlaModel>MailId}" class="cl_inputLabel sapUiTinyMarginBegin"/>
+									</uitable:template>
+								</uitable:Column>
+								<uitable:Column width="35%">
+									<uitable:label><Label text="{i18n>SLAType}"/></uitable:label>
+									<uitable:template>
+										<Text text="{GenralSlaModel>MailType}" class="cl_inputLabel sapUiTinyMarginBegin"/>
+									</uitable:template>
+								</uitable:Column>
+								<uitable:Column width="15%">
+									<uitable:label><Label text="{i18n>Action}"/></uitable:label>
+									<uitable:template>
+										<Button id="id_sladelemulmail" type="Transparent" icon="{= ${JM_ImageModel>/path} + 'DeleteEmail.svg'}" press="fnDelSingGSlaPop"
+											tooltip="{i18n>RemoveEmail}" class="sapUiTinyMarginBegin cl_deleteTblBtn sapUiSizeCompact"/>
+									</uitable:template>
+								</uitable:Column>
+							</uitable:columns>
+						</uitable:Table>
+						<layoutData>
+							<layout:GridData span="L12 M6 S12"/>
+						</layoutData>
+					</VBox>
+				</layout:Grid>
+			</VBox>
+			<HBox width="100%" justifyContent="Center" alignItems="Center"></HBox>
+		</VBox>
+		<buttons>
+			<Button text="{i18n>Close}" icon="{= ${JM_ImageModel>/path} + 'cancel.svg'}" class="sapUiSizeCompact cl_SecondaryButton sapUiTinyMarginEnd"
+				press="fnCloseGeneralSLA"/>
+			<Button text="{i18n>Save}" tooltip="{i18n>MaintainSLA}" icon="{= ${JM_ImageModel>/path} + 'Save.svg'}" class="sapUiSizeCompact cl_PrimaryButton "
+				press="fnSaveGeneralSLA"/>
+		</buttons>
+	</Dialog>
+</core:FragmentDefinition>

@@ -1,0 +1,256 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:layout="sap.ui.layout" xmlns:uitable="sap.ui.table">
+	<Dialog id="idemailDialog" class="cl_DialogStyle sapUiSizeCompact " horizontalScrolling="false" verticalScrolling="true"
+		contentWidth="32rem">
+		<customHeader>
+			<Toolbar class="cl_DilogCustomHdr" height="2.5rem">
+				<ToolbarSpacer/>
+				<Text
+					text="{ parts: [ {path: 'i18n>EmailSLA'}, {path: 'InputModel>/AppId'}, {path: 'InputModel>/Lvl'} ], formatter: '.formatter.formatEmailSLA' }"
+					class="cl_DialogTitle sapUiTinyMarginTopBottom"/>
+				<ToolbarSpacer/>
+			</Toolbar>
+		</customHeader>
+		<VBox class="sapUiSmallMarginBeginEnd sapUiTinyMarginBottom">
+			<layout:Grid defaultSpan="L12 M12 S12">
+				<VBox class="sapUiTinyMarginTopBottom" alignItems="Center">
+					<Label text="{JScreenParm>/List/0/WfParm1Name}" class="cl_inputLabel"/>
+					<Label text="{InputModel>/WfParm1}" class="cl_label_blue"/>
+					<layoutData>
+						<layout:GridData
+							span="{ parts: [ {path:'InputModel>/WfParm1'}, {path:'InputModel>/WfParm2'}, {path:'InputModel>/WfParm3'}, {path:'InputModel>/WfParm4'} ], formatter: '.formatter.getDynamicSpan' }"
+						visibleXL="{= !!${InputModel>/WfParm1} }"	visibleL="{= !!${InputModel>/WfParm1} }" visibleM="{= !!${InputModel>/WfParm1} }" visibleS="{= !!${InputModel>/WfParm1} }"/>
+					</layoutData>
+				</VBox>
+				<VBox class="sapUiTinyMarginTopBottom" alignItems="Center">
+					<Label text="{JScreenParm>/List/0/WfParm2Name}" class="cl_inputLabel"/>
+					<Label text="{InputModel>/WfParm2}" class="cl_label_blue"/>
+					<layoutData>
+						<layout:GridData
+							span="{ parts: [ {path:'InputModel>/WfParm1'}, {path:'InputModel>/WfParm2'}, {path:'InputModel>/WfParm3'}, {path:'InputModel>/WfParm4'} ], formatter: '.formatter.getDynamicSpan' }"
+						visibleXL="{= !!${InputModel>/WfParm2} }"	visibleL="{= !!${InputModel>/WfParm2} }" visibleM="{= !!${InputModel>/WfParm2} }" visibleS="{= !!${InputModel>/WfParm2} }"/>
+					</layoutData>
+				</VBox>
+				<VBox class="sapUiTinyMarginTopBottom sapUiMediumMarginBegin" alignItems="Center">
+					<Label text="{JScreenParm>/List/0/WfParm3Name}" class="cl_inputLabel"/>
+					<Label text="{InputModel>/WfParm3}" class="cl_label_blue"/>
+					<layoutData>
+						<layout:GridData
+							span="{ parts: [ {path:'InputModel>/WfParm1'}, {path:'InputModel>/WfParm2'}, {path:'InputModel>/WfParm3'}, {path:'InputModel>/WfParm4'} ], formatter: '.formatter.getDynamicSpan' }"
+						visibleXL="{= !!${InputModel>/WfParm3} }" 	visibleL="{= !!${InputModel>/WfParm3} }" visibleM="{= !!${InputModel>/WfParm3} }" visibleS="{= !!${InputModel>/WfParm3 } }"/>
+					</layoutData>
+				</VBox>
+				<VBox class="sapUiTinyMarginTopBottom sapUiMediumMarginBegin" alignItems="Center">
+					<Label text="{JScreenParm>/List/0/WfParm4Name}" class="cl_inputLabel"/>
+					<Label text="{InputModel>/WfParm4}" class="cl_label_blue"/>
+					<layoutData>
+						<layout:GridData
+							span="{ parts: [ {path:'InputModel>/WfParm1'}, {path:'InputModel>/WfParm2'}, {path:'InputModel>/WfParm3'}, {path:'InputModel>/WfParm4'} ], formatter: '.formatter.getDynamicSpan' }"
+							visibleXL="{= !!${InputModel>/WfParm4} }" visibleL="{= !!${InputModel>/WfParm4} }" visibleM="{= !!${InputModel>/WfParm4} }" visibleS="{= !!${InputModel>/WfParm4} }"/>
+					</layoutData>
+				</VBox>
+			</layout:Grid>
+			<VBox class="cl_wf_icontabbox ">
+				<IconTabBar id="idIconTabBarEmailSLA" expanded="true" class="cl_wf_icontabbar" select="onIconTabSelect">
+					<items>
+						<!--Email Tab -->
+						<IconTabFilter text="{i18n>Email}" key="Email" id="idEmailTab">
+							<VBox id="idEmailLayout" class="sapUiTinyMarginTop">
+								<layout:Grid defaultSpan="L12 M12 S12">
+									<VBox class="sapUiTinyMarginBottom">
+										<Text text="{i18n>Email}" class=" cl_inputLabel"/>
+										<Input id="id_mail" width="100%" placeholder="" maxLength="100" liveChange="onEmailLiveChange" change="onEmailChange"
+											class=" sapUiTinyMarginEnd cl_InputField "/>
+										<layoutData>
+											<layout:GridData span="L10 M6 S12"/>
+										</layoutData>
+									</VBox>
+									<VBox alignItems="End">
+										<Label></Label>
+										<HBox>
+											<Button icon="{= ${JM_ImageModel>/path} + 'Plus.svg'}" id="id_Savemail" class=" cl_NoTxtPrimaryBtn sapUiSizeCompact " press="fnaddEmail"
+												tooltip="{i18n>AddEmail}"/>
+											<Button icon="{= ${JM_ImageModel>/path} + 'del.svg'}" id="id_delemail" class="sapUiTinyMarginBegin cl_NoTxtPrimaryBtn sapUiSizeCompact"
+												press="fnDelMultiEmailPop" tooltip="{i18n>RemoveEmail}"/>
+										</HBox>
+										<layoutData>
+											<layout:GridData span="L2 M6 S12"/>
+										</layoutData>
+									</VBox>
+									<VBox class="sapUiTinyMarginBottom">
+										<uitable:Table id="ID_LMAIL_TBL" selectionMode="MultiToggle" visibleRowCount="4" rows="{EmailList>/EmailList}" class=" cl_TableStyle">
+											<uitable:noData>
+												<VBox alignItems="Center" justifyContent="Center">
+													<Image src="{= ${JM_ImageModel>/path} + 'Nodatafound.gif'}" width="100px" height="100px"/>
+													<!--<Image src="{= ${JM_ImageModel>/path} + 'NoDataFound.png'}" width="100px" height="100px"/>-->
+													<Text text="{i18n>NoDataFound}"/>
+												</VBox>
+											</uitable:noData>
+											<uitable:columns>
+												<uitable:Column>
+													<uitable:label><Label text="{i18n>Email}"/></uitable:label>
+													<uitable:template>
+														<Text text="{EmailList>MailId}" class="cl_inputLabel sapUiTinyMarginBegin"/>
+													</uitable:template>
+												</uitable:Column>
+												<uitable:Column width="95px">
+													<uitable:label><Label text="{i18n>Action}"/></uitable:label>
+													<uitable:template>
+														<Button id="id_delemulmail" enabled="{InputModel>/isEnabled}" type="Transparent" icon="{= ${JM_ImageModel>/path} + 'DeleteEmail.svg'}"
+															press="fnSingleRemoveEmailConfirm" tooltip="{i18n>RemoveEmail}" class="sapUiTinyMarginBegin cl_deleteTblBtn sapUiSizeCompact "/>
+													</uitable:template>
+												</uitable:Column>
+											</uitable:columns>
+										</uitable:Table>
+									</VBox>
+								</layout:Grid>
+							</VBox>
+						</IconTabFilter>
+						<!--SLA Tab -->
+						<IconTabFilter text="{i18n>SLA}" key="SLA" id="idSlaTab">
+							<VBox  class="sapUiTinyMarginTop">
+								<layout:Grid defaultSpan="L12 M12 S12">
+									<VBox class="sapUiTinyMarginBottom">
+										<Text text="{i18n>SLARemiander}" width="180px" class="cl_inputLabel sapUiTinyMarginTop"/>
+										<layoutData>
+											<layout:GridData span="L6 M6 S12"/>
+										</layoutData>
+									</VBox>
+									<VBox class="sapUiTinyMarginBottom">
+										<Input id="ID_SLAREMDATE" valueLiveUpdate="true" type="Number" showValueHelp="false" liveChange="fn_slavalidation" change="onSlaFieldChange"
+											width="100px" class=" sapUiSizeCompact cl_InputField"/>
+										<layoutData>
+											<layout:GridData span="L3 M6 S12"/>
+										</layoutData>
+									</VBox>
+									<VBox class="sapUiTinyMarginBottom">
+										<TimePicker id="ID_SLAREMTIME" width="100px" change="onSlaFieldChange" displayFormat="HH:mm" valueFormat="HH:mm" placeholder=" "
+											class="sapUiSizeCompact cl_InputField "/>
+										<layoutData>
+											<layout:GridData span="L3 M6 S12"/>
+										</layoutData>
+									</VBox>
+									<VBox class="sapUiTinyMarginBottom">
+										<Text text="{i18n>SLAEscalation}" width="180px" class=" cl_inputLabel sapUiTinyMarginTop"/>
+										<layoutData>
+											<layout:GridData span="L6 M6 S12"/>
+										</layoutData>
+									</VBox>
+									<VBox class="sapUiTinyMarginBottom">
+										<Input id="ID_SLAESCDATE" valueLiveUpdate="true" type="Number" change="onSlaFieldChange" showValueHelp="false" liveChange="fn_slavalidation"
+											width="100px" class=" sapUiSizeCompact cl_InputField"/>
+										<layoutData>
+											<layout:GridData span="L3 M6 S12"/>
+										</layoutData>
+									</VBox>
+									<VBox class="sapUiTinyMarginBottom">
+										<TimePicker id="ID_SLAESCTIME" width="100px" change="onSlaFieldChange" displayFormat="HH:mm" valueFormat="HH:mm" placeholder=" "
+											class="sapUiSizeCompact cl_InputField "/>
+										<layoutData>
+											<layout:GridData span="L3 M6 S12"/>
+										</layoutData>
+									</VBox>
+									<VBox class="sapUiTinyMarginBottom">
+										<Label text="{i18n>SLAMailTrigger}" class=" cl_inputLabel sapUiTinyMarginTop"/>
+										<layoutData>
+											<layout:GridData span="L6 M6 S12"/>
+										</layoutData>
+									</VBox>
+									<VBox class="sapUiTinyMarginBottom">
+										<Input id="ID_TRIGGERDATE" valueLiveUpdate="true" type="Number" change="onSlaFieldChange" showValueHelp="false"
+											liveChange="fn_slavalidation" width="100px" class=" sapUiSizeCompact cl_InputField"/>
+										<layoutData>
+											<layout:GridData span="L3 M6 S12"/>
+										</layoutData>
+									</VBox>
+									<VBox class="sapUiTinyMarginBottom">
+										<TimePicker id="ID_TRIGGERTIME" width="100px" change="onSlaFieldChange" displayFormat="HH:mm" valueFormat="HH:mm" placeholder=" "
+											class="sapUiSizeCompact cl_InputField "/>
+										<layoutData>
+											<layout:GridData span="L3 M6 S12"/>
+										</layoutData>
+									</VBox>
+									<VBox>
+										<CheckBox id="ID_EXTAPR" text="{i18n>ExistingApprover}" select="onSlaFieldChange" class="cl_ReduceCheckbx cl_checkbx sapUiSizeCompact"/>
+										<layoutData>
+											<layout:GridData span="L12 M6 S12"/>
+										</layoutData>
+									</VBox>
+									<VBox class="sapUiTinyMarginBottom">
+										<Label text="{i18n>Email}" class=" cl_inputLabel"/>
+										<HBox>
+											<VBox width="75%" class="sapUiSmallMarginEnd">
+												<Input id="id_slamail" liveChange="onEmailLiveChange" width="100%" change="onEmailChange" class=" sapUiTinyMarginEnd cl_InputField "/>
+											</VBox>
+											<VBox width="25%">
+												<ComboBox id="ID_EMAILCOMBOBOX" width="100px" items="{JM_SLASELMODEL>/List}" change="onSlaMailTypeChange"
+													class="sapUiSizeCompact cl_InputField">
+													<core:Item key="{JM_SLASELMODEL>key}" text="{JM_SLASELMODEL>text}"/>
+												</ComboBox>
+											</VBox>
+										</HBox>
+										<layoutData>
+											<layout:GridData span="L10 M6 S12"/>
+										</layoutData>
+									</VBox>
+									<VBox class="sapUiTinyMarginBottom">
+										<Label></Label>
+										<HBox>
+											<Button icon="{= ${JM_ImageModel>/path} + 'Plus.svg'}" id="id_slaSavemail" class=" cl_NoTxtPrimaryBtn sapUiSizeCompact "
+												press="fnaddSlaEmail" tooltip="{i18n>AddEmail}"/>
+											<Button icon="{= ${JM_ImageModel>/path} + 'del.svg'}" id="id_sladelemail" class="sapUiTinyMarginBegin cl_NoTxtPrimaryBtn sapUiSizeCompact"
+												press="fnDelMultiSLAPop" tooltip="{i18n>RemoveEmail}"/>
+										</HBox>
+										<layoutData>
+											<layout:GridData span="L2 M6 S12"/>
+										</layoutData>
+									</VBox>
+									<VBox >
+										<uitable:Table id="ID_LSLA_TBL" selectionMode="MultiToggle" visibleRowCount="4" rows="{SlaList>/SlaList}" class=" cl_TableStyle">
+											<uitable:noData>
+												<VBox alignItems="Center" justifyContent="Center">
+													<Image src="{= ${JM_ImageModel>/path} + 'Nodatafound.gif'}" width="100px" height="100px"/>
+													<!--<Image src="{= ${JM_ImageModel>/path} + 'NoDataFound.png'}" width="100px" height="100px"/>-->
+													<Text text="{i18n>NoDataFound}"/>
+												</VBox>
+											</uitable:noData>
+											<uitable:columns>
+												<uitable:Column width="50%">
+													<uitable:label><Label text="{i18n>Email}"/></uitable:label>
+													<uitable:template>
+														<Text text="{SlaList>MailId}" class="cl_inputLabel sapUiTinyMarginBegin"/>
+													</uitable:template>
+												</uitable:Column>
+												<uitable:Column width="35%">
+													<uitable:label><Label text="{i18n>SLAType}"/></uitable:label>
+													<uitable:template>
+														<Text text="{SlaList>MailType}" class="cl_inputLabel sapUiTinyMarginBegin"/>
+													</uitable:template>
+												</uitable:Column>
+												<uitable:Column width="15%">
+													<uitable:label><Label text="{i18n>Action}"/></uitable:label>
+													<uitable:template>
+														<Button id="id_sladelemulmail" enabled="{InputModel>/isEnabled}" type="Transparent" icon="{= ${JM_ImageModel>/path} + 'DeleteEmail.svg'}"
+															press="fnDelSingSLAPop" tooltip="{i18n>RemoveEmail}" class="sapUiTinyMarginBegin cl_deleteTblBtn sapUiSizeCompact"/>
+													</uitable:template>
+												</uitable:Column>
+											</uitable:columns>
+										</uitable:Table>
+										<layoutData>
+											<layout:GridData span="L12 M6 S12"/>
+										</layoutData>
+									</VBox>
+								</layout:Grid>
+							</VBox>
+						</IconTabFilter>
+					</items>
+				</IconTabBar>
+			</VBox>
+		</VBox>
+		<buttons>
+			<Button text="{i18n>Close}" icon="{= ${JM_ImageModel>/path} + 'cancel.svg'}" class="sapUiSizeCompact cl_SecondaryButton sapUiTinyMarginEnd"
+				press="onEmailDialogClose"/>
+			<Button text="{i18n>Save}" tooltip="{i18n>MaintainSLA}" icon="{= ${JM_ImageModel>/path} + 'Save.svg'}" class="sapUiSizeCompact cl_PrimaryButton "
+				press="fnSaveSlaEmail"/>
+		</buttons>
+	</Dialog>
+</core:FragmentDefinition>

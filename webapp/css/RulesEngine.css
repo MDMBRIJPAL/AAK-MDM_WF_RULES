@@ -1,0 +1,47 @@
+
+
+.cl_ToolBarSpacer .sapMTBSpacer {
+    display: flex !important;
+}
+.cl_ToolBarSpacer {
+    border-bottom: none !important;
+    padding: 0px;
+}
+
+/*ERROR POPUP*/
+
+.cl_error_toolbar.sapMIBar.sapMHeader-CTX {
+    background-color: #ffeaf4 !important;
+    box-shadow: none !important;
+}
+
+.cl_errorToolbar {
+    text-align: start;
+    font-size: 17px;
+    color: rgba(244, 67, 54, 1);
+    font-weight: 600;
+    font-family: 'Segoe UI' !important;
+    margin: 0px !important;
+}
+
+.cl_validationerroList .sapMSLITitleOnly {
+    font-size: 14px !important;
+    color: rgba(78, 75, 102, 1) !important;
+    font-family: 'Segoe UI' !important;
+    font-weight: 500 !important;
+}
+
+.cl_validationerroList {
+    max-height: none !important;
+    height: auto !important;
+}
+
+.cl_validationerroList .sapMLIBFocusable:focus {
+    outline: none !important;
+}
+
+.cl_RotateImage .sapMBtnIcon {
+    transform: rotate(180deg);
+    transition: transform 0.2s ease;
+}
+

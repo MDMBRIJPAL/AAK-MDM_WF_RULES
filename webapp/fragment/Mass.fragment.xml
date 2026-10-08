@@ -1,0 +1,24 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core">
+	<Dialog id="idMassCopyDialog" class="cl_DialogStyle sapUiSizeCompact " contentWidth="400px">
+		<customHeader>
+			<Toolbar class="cl_DilogCustomHdr" height="2.5rem">
+				<ToolbarSpacer/>
+				<Text text="{i18n>MC}" class="cl_DialogTitle sapUiTinyMarginTopBottom"/>
+				<ToolbarSpacer/>
+			</Toolbar>
+		</customHeader>
+		<VBox class="sapUiTinyMargin">
+			<RadioButtonGroup id="massgroup" columns="2" select="onRadioSelectMass" class="cl_wfradiobtns sapUiTinyMarginBegin">
+				<RadioButton text="{i18n>ParameterWise}"/>
+				<RadioButton text="{i18n>ProcessWise}"/>
+			</RadioButtonGroup>
+			<VBox id="dynamicBox" class="sapUiSmallMarginTop sapUiSmallMarginBegin"/>
+		</VBox>
+		<buttons>
+			<Button text="{i18n>Cancel}" icon="{= ${JM_ImageModel>/path} + 'Cancel.svg' }" press="onCancelCopyDialog"
+				class="cl_SecondaryButton sapUiTinyMarginEnd"/>
+			<Button text="{i18n>Save}" icon="{= ${JM_ImageModel>/path} + 'Save.svg'}" class="sapUiSizeCompact cl_PrimaryButton "
+				press="onConfirmMassCopy"/>
+		</buttons>
+	</Dialog>
+</core:FragmentDefinition>

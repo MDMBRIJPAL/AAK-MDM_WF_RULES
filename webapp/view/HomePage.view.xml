@@ -1,0 +1,45 @@
+<mvc:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" controllerName="WF_RLS.controller.HomePage"
+	xmlns:html="http://www.w3.org/1999/xhtml" xmlns:grid="sap.ui.layout">
+	<App>
+		<pages>
+			<Page showHeader="true" class="cl_pageBg sapUiSizeCompact" enableScrolling="true">
+				<customHeader>
+					<OverflowToolbar class="cl_header_toolbar">
+						<Image src="{= ${JM_ImageModel>/path} + 'MDSexalca.svg'}" class="cl_ImageStyle" tooltip="{i18n>Back}" width="2rem"></Image>
+						<Title text="{i18n>homeTitle}" class="sapUiSmallMarginBegin cl_header_title"/>
+						<ToolbarSpacer/>
+						<Label text="{JM_UserModel>/id} - {JM_UserModel>/Uname}" class="cl_userid_font sapUiTinyMarginEnd"/>
+						<Image src="{= ${JM_ImageModel>/path} + 'ExalcaLogotiny.svg'}" tooltip="{i18n>ExalcaMDS}" class="sapUiSmallMarginEnd" width="1rem"></Image>
+					</OverflowToolbar>
+				</customHeader>
+				<content>
+					<VBox class="cl_color_screen" >
+						<VBox class="cl_downbgImage" alignItems="Center" height="100%">
+							<grid:Grid class="sapUiLargeMarginTop" hSpacing="2">
+								<HBox id="id_Workflow" class="cl_TileBg sapUiSmallMarginBottom" justifyContent="Center" height="9rem">
+									<VBox class="sapUiSmallMarginTopBottom" alignContent="Center" alignItems="Center" justifyContent="Center">
+										<Image src="{= ${JM_ImageModel>/path} + 'WorFlowTile.svg'}" class="cl_alignCenter sapUiTinyMarginBegin" width="4rem"/>
+										<Label text="{i18n>Workflow}" tooltip="{i18n>WorkflowParameter}" class="cl_LabelTile sapUiMediumMarginLeft"/>
+									</VBox>
+									<layoutData>
+										<grid:GridData span="L6 M12 S12"/>
+									</layoutData>
+								</HBox>
+								
+								<HBox id="id_RulesEngine" class="cl_TileBg sapUiSmallMarginBottom" justifyContent="Center" height="9rem">
+									<VBox class="sapUiSmallMarginTopBottom" alignContent="Center" alignItems="Center" justifyContent="Center">
+										<Image src="{= ${JM_ImageModel>/path} + 'EWTC.svg'}" class="cl_alignCenter sapUiTinyMarginBegin" width="4rem"/>
+										<Label text="{i18n>RulesEngine}" tooltip="{i18n>RulesEngine}" class="cl_LabelTile sapUiTinyMarginBegin"/>
+									</VBox>
+									<layoutData>
+										<grid:GridData span="L6 M12 S12"/>
+									</layoutData>
+								</HBox>
+							</grid:Grid>
+						</VBox>
+					</VBox>
+				</content>
+			</Page>
+		</pages>
+	</App>
+</mvc:View>
